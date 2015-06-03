@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProveedorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProveedorLabel_idProveedor}" for="idProveedor" />
+                    <h:inputText id="idProveedor" value="#{proveedorController.selected.idProveedor}" title="#{bundle.CreateProveedorTitle_idProveedor}" required="true" requiredMessage="#{bundle.CreateProveedorRequiredMessage_idProveedor}"/>
+                    <h:outputLabel value="#{bundle.CreateProveedorLabel_cedulaPro}" for="cedulaPro" />
+                    <h:inputText id="cedulaPro" value="#{proveedorController.selected.cedulaPro}" title="#{bundle.CreateProveedorTitle_cedulaPro}" />
+                    <h:outputLabel value="#{bundle.CreateProveedorLabel_nombrePro}" for="nombrePro" />
+                    <h:inputText id="nombrePro" value="#{proveedorController.selected.nombrePro}" title="#{bundle.CreateProveedorTitle_nombrePro}" />
+                    <h:outputLabel value="#{bundle.CreateProveedorLabel_apellidoPro}" for="apellidoPro" />
+                    <h:inputText id="apellidoPro" value="#{proveedorController.selected.apellidoPro}" title="#{bundle.CreateProveedorTitle_apellidoPro}" />
+                    <h:outputLabel value="#{bundle.CreateProveedorLabel_direccionPro}" for="direccionPro" />
+                    <h:inputText id="direccionPro" value="#{proveedorController.selected.direccionPro}" title="#{bundle.CreateProveedorTitle_direccionPro}" />
+                    <h:outputLabel value="#{bundle.CreateProveedorLabel_emailPro}" for="emailPro" />
+                    <h:inputText id="emailPro" value="#{proveedorController.selected.emailPro}" title="#{bundle.CreateProveedorTitle_emailPro}" />
+                    <h:outputLabel value="#{bundle.CreateProveedorLabel_telefonoPro}" for="telefonoPro" />
+                    <h:inputText id="telefonoPro" value="#{proveedorController.selected.telefonoPro}" title="#{bundle.CreateProveedorTitle_telefonoPro}" />
+                    <h:outputLabel value="#{bundle.CreateProveedorLabel_estadoPro}" for="estadoPro" />
+                    <h:inputText id="estadoPro" value="#{proveedorController.selected.estadoPro}" title="#{bundle.CreateProveedorTitle_estadoPro}" />
+                    <h:outputLabel value="#{bundle.CreateProveedorLabel_observacionesPro}" for="observacionesPro" />
+                    <h:inputText id="observacionesPro" value="#{proveedorController.selected.observacionesPro}" title="#{bundle.CreateProveedorTitle_observacionesPro}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{proveedorController.create}" value="#{bundle.CreateProveedorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{proveedorController.prepareList}" value="#{bundle.CreateProveedorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProveedorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

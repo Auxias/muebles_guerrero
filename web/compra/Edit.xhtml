@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCompraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCompraLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{compraController.selected.cantidad}" title="#{bundle.EditCompraTitle_cantidad}" />
+                    <h:outputLabel value="#{bundle.EditCompraLabel_fechaCompra}" for="fechaCompra" />
+                    <h:inputText id="fechaCompra" value="#{compraController.selected.fechaCompra}" title="#{bundle.EditCompraTitle_fechaCompra}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCompraLabel_proveedor}" for="proveedor" />
+                    <h:selectOneMenu id="proveedor" value="#{compraController.selected.proveedor}" title="#{bundle.EditCompraTitle_proveedor}" required="true" requiredMessage="#{bundle.EditCompraRequiredMessage_proveedor}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCompraLabel_materiaPrima}" for="materiaPrima" />
+                    <h:selectOneMenu id="materiaPrima" value="#{compraController.selected.materiaPrima}" title="#{bundle.EditCompraTitle_materiaPrima}" required="true" requiredMessage="#{bundle.EditCompraRequiredMessage_materiaPrima}">
+                        <f:selectItems value="#{materiaPrimaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{compraController.update}" value="#{bundle.EditCompraSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCompraViewLink}"/>
+                <br />
+                <h:commandLink action="#{compraController.prepareList}" value="#{bundle.EditCompraShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCompraIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
